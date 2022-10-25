@@ -9,17 +9,11 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        guard let pageDataAsset = NSDataAsset(name: "products") else {
-            print(1)
+        guard let data = try? JSONParser().getData() else {
             return
         }
         
-        guard let pageData = try? JSONDecoder().decode(Page.self, from: pageDataAsset.data) else {
-            print(2)
-            return
-        }
-        
-        print(pageData.pages[0].vendorId)
+        print(data.pages[0].vendorId)
     }
 }
 
