@@ -13,14 +13,13 @@ struct Product: Decodable {
     let totalCount: Int
     let offset: Int
     let limit: Int
-    let pages: Pages
+    var pages: Pages
     
     enum CodingKeys: String, CodingKey {
-        case offset, limit
+        case offset, limit, pages
         case pageNo = "page_no"
-        case itemPerPage = "item_per_page"
+        case itemsPerPage = "item_per_page"
         case totalCount = "total_count"
-        case pages
     }
 }
 
@@ -43,6 +42,6 @@ struct Pages: Decodable {
         case bargainPrice = "bargain_price"
         case discountedPrice = "discounted_price"
         case createdAt = "created_at"
-        case issudeAt = "issued_at"
+        case issuedAt = "issued_at"
     }
 }
