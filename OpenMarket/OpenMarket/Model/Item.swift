@@ -19,7 +19,7 @@ struct Item: Decodable {
     var createdAt: String
     var issuedAt: String
     
-    enum Codingkeys: String, CodingKey {
+    enum CodingKeys: String, CodingKey {
         case vendorId = "vendor_id"
         case bargainPrice = "bargain_price"
         case discountedPrice = "discounted_price"

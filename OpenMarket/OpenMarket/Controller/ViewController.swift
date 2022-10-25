@@ -19,7 +19,7 @@ class ViewController: UIViewController {
             return
         }
         
-        print(pageData.totalCount)
+        print(pageData.pages[0].vendorId)
     }
 }
 
