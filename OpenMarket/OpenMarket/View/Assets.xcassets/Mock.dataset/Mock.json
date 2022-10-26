@@ -1,9 +1,12 @@
 {
-  "page_no": 1,
-  "items_per_page": 20,
-  "total_count": 10,
+  "pageNo": 1,
+  "itemsPerPage": 20,
+  "totalCount": 10,
   "offset": 0,
   "limit": 20,
+  "lastPage": 1,
+  "hasNext": false,
+  "hasPrev": false,
   "pages": [
     {
       "id": 20,
