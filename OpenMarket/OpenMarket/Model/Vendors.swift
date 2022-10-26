@@ -6,3 +6,8 @@
 //
 
 import Foundation
+
+struct Vendors: Decodable {
+    let id: Int
+    let name: String
+}
