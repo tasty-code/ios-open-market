@@ -20,14 +20,17 @@ final class JSONParsingTests: XCTestCase {
     }
 
     func test_파싱_되는지_확인() {
-        var product = jsonParser.product
+        let product = jsonParser.jsonParsingData()
         
-        jsonParser.jsonParsingData()
-        let pageNumber = product?.pageNo
+        print(product)
+    }
+    
+    func test_파싱한데이터_pageNo와_1이랑_비교() {
+        let product = jsonParser.jsonParsingData()
         
-        print(pageNumber)
+        let pageNo = product?.pageNo
         
-//        XCTAssertEqual(1, pageNumber)
+        XCTAssertEqual(1, pageNo)
     }
 
 }

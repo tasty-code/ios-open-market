@@ -11,13 +11,14 @@ class JsonParser {
     enum FileName: String {
         case fileName = "products"
     }
-    var product: Product?
     
-    func jsonParsingData() {
+    func jsonParsingData() -> Product? {
         guard let dataAsset = NSDataAsset(name: FileName.fileName.rawValue) else {
-            return
+            return nil
         }
         let jsonDecoder = JSONDecoder()
-        product = try? jsonDecoder.decode(Product.self, from: dataAsset.data)
+        let product = try? jsonDecoder.decode(Product.self, from: dataAsset.data)
+        
+        return product
     }
 }
