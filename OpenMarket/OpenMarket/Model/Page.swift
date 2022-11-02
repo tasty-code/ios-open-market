@@ -12,18 +12,12 @@ struct Page: Decodable {
     var totalCount: Int
     var offset: Int
     var limit: Int
-    var pages: [Item]
+    var pages: [Product]
     var lastPage: Int
     var hasNext: Bool
     var hasPrev: Bool
     
     enum CodingKeys: String, CodingKey {
-        case pageNo = "page_no"
-        case itemsPerPage = "items_per_page"
-        case totalCount = "total_count"
-        case lastPage = "last_page"
-        case hasNext = "has_next"
-        case hasPrev = "has_prev"
-        case offset, limit, pages
+        case pageNo, itemsPerPage, totalCount, offset, limit, pages, lastPage, hasNext, hasPrev
     }
 }

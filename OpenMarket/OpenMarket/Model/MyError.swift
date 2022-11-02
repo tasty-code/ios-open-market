@@ -8,9 +8,13 @@
 import Foundation
 
 enum MyError: Error, LocalizedError {
+    case unvalidURL
     case parsingError
+    
     var errorDescription: String {
         switch self {
+        case .unvalidURL:
+            return "url 생성 실패"
         case .parsingError:
             return "dataParsing 실패"
         }

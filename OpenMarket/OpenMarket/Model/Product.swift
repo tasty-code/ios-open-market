@@ -6,15 +6,15 @@
 //
 
 import Foundation
-struct Item: Decodable {
+struct Product: Decodable {
     var id: Int
     var vendorId: Int
     var name: String
     var thumbnail: String
     var currency: String
-    var price: Int
-    var bargainPrice: Int
-    var discountedPrice: Int
+    var price: Float
+    var bargainPrice: Float
+    var discountedPrice: Float
     var stock: Int
     var createdAt: String
     var issuedAt: String

@@ -7,21 +7,14 @@
 
 import UIKit
 
-struct JSONParser {
-    enum FileName: String {
-        case productFile
-        var description: String {
-            switch self {
-            case .productFile:
-                return "products"
-            }
-        }
+struct JSONParser<T: Decodable> {
+    enum DecodeType {
+        case string
     }
-    
-    func getData() throws -> Page {
-        guard let pageDataAsset = NSDataAsset(name: FileName.productFile.description), let pageData = try? JSONDecoder().decode(Page.self, from: pageDataAsset.data) else {
+    func decode(data: Data?) throws -> T {
+        guard let data = data, let decodingData = try? JSONDecoder().decode(T.self, from: data) else {
             throw MyError.parsingError
         }
-        return pageData
+        return decodingData
     }
 }
