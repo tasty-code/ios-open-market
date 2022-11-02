@@ -8,16 +8,8 @@
 import Foundation
 
 struct NetWork {
-    enum UrlStruct: String {
-        case http = "http://"
-        case host = "openmarket.yagom-academy.kr"
-        case productsPath = "/api/products"
-        case healthPath = "/healthChecker"
-        case parameter = "?page_no=1&items_per_page=100"
-        case productsPathId = "/api/products/32"
-    }
     
-    func getOpenMarketData(url: String, completion: @escaping (Product) -> Void ) {
+    func getOpenMarketData(url: String, completion: @escaping (DetailPage) -> () ) {
         guard let url = URL(string: url) else {
             return
         }
@@ -37,7 +29,7 @@ struct NetWork {
             
             if let data = data {
                 do {
-                    let receivedData = try JSONDecoder().decode(Product.self, from: data)
+                    let receivedData = try JSONDecoder().decode(DetailPage.self, from: data)
                     completion(receivedData)
                 } catch {
                     print(error.localizedDescription)

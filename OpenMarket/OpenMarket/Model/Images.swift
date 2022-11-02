@@ -13,7 +13,7 @@ struct Images: Decodable {
     let thumbnailUrl: String
     let issuedAt: String
     
-    enum Codingkeys: String, CodingKey {
+    enum CodingKeys: String, CodingKey {
         case id, url
         case thumbnailUrl = "thumbnail_url"
         case issuedAt = "issued_at"

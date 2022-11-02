@@ -12,7 +12,9 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        network.getOpenMarketData(url: "https://openmarket.yagom-academy.kr/api/products?page_no=1&items_per_page=100")
+        network.getOpenMarketData(url: "https://openmarket.yagom-academy.kr/api/products/32") { data in
+            print(data.id)
         
+        }
     }
 }

@@ -16,5 +16,5 @@ struct Product: Decodable {
     let lastPage: Int
     let hasNext: Bool
     let hasPrev: Bool
-    let pages: [Page]
+    let pages: [ListPage]
 }
