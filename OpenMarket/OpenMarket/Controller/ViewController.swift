@@ -12,11 +12,13 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        network.getDetailPageData { data in
-            print(data.id)
-        }
-        network.getProductData { data in
-            print(data.pageNo)
+        network.getDetailPageData { (result: Result<DetailPage, Error>) in
+            switch result {
+            case .success(let success):
+                print(success.id)
+            case .failure(let failure):
+                print(failure)
+            }
         }
         
     }

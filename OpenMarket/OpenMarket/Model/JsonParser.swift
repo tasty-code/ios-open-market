@@ -22,15 +22,3 @@ class JsonParser {
         return product
     }
 }
-
-protocol Parser {
-    func openMarketParser<T: Decodable>(model: T, data: Data ) -> T
-}
-
-extension JsonParser: Parser {
-    func openMarketParser<T: Decodable>(model: T, data: Data) -> T {
-        let openMarketDecoder = JSONDecoder()
-        guard let openMarketData = try? openMarketDecoder.decode(T.self, from: data) else { return model }
-        return openMarketData
-    }
-}
