@@ -7,9 +7,25 @@
 
 import Foundation
 
-struct NetWork {
+protocol API {
+    func getDetailPageData(completion: @escaping (DetailPage) -> Void)
+    func getProductData(completion: @escaping (Product) -> Void)
+}
+
+class NetWork: API {
+    func getProductData(completion: @escaping (Product) -> Void) {
+        let url = "https://openmarket.yagom-academy.kr/api/products?page_no=1&items_per_page=100"
+        self.getOpenMarketData(url: url, completion: completion)
+    }
     
-    func getOpenMarketData(url: String, completion: @escaping (DetailPage) -> () ) {
+    func getDetailPageData(completion: @escaping (DetailPage) -> Void) {
+        let url = "https://openmarket.yagom-academy.kr/api/products/32"
+        self.getOpenMarketData(url: url, completion: completion)
+    }
+}
+
+extension NetWork {
+    func getOpenMarketData<T: Decodable>(url: String, completion: @escaping (T) -> () ) {
         guard let url = URL(string: url) else {
             return
         }
@@ -29,7 +45,7 @@ struct NetWork {
             
             if let data = data {
                 do {
-                    let receivedData = try JSONDecoder().decode(DetailPage.self, from: data)
+                    let receivedData = try JSONDecoder().decode(T.self, from: data)
                     completion(receivedData)
                 } catch {
                     print(error.localizedDescription)

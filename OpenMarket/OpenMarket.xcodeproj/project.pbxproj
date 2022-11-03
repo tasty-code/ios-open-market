@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		3258D0DB290F6E3900C25807 /* NetWork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3258D0DA290F6E3900C25807 /* NetWork.swift */; };
 		325B7EBC29123E5000CEAF98 /* DetailPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 325B7EBB29123E5000CEAF98 /* DetailPage.swift */; };
+		325B7EBE2913630800CEAF98 /* NetWorkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 325B7EBD2913630800CEAF98 /* NetWorkError.swift */; };
 		32687C542907B36E005799CA /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32687C532907B36E005799CA /* Product.swift */; };
 		AA0CE0252908BD8E00A41C87 /* JsonParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0CE0242908BD8E00A41C87 /* JsonParser.swift */; };
 		AA0CE0282908CAEE00A41C87 /* ListPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0CE0272908CAEE00A41C87 /* ListPage.swift */; };
@@ -36,6 +37,7 @@
 /* Begin PBXFileReference section */
 		3258D0DA290F6E3900C25807 /* NetWork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetWork.swift; sourceTree = "<group>"; };
 		325B7EBB29123E5000CEAF98 /* DetailPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPage.swift; sourceTree = "<group>"; };
+		325B7EBD2913630800CEAF98 /* NetWorkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetWorkError.swift; sourceTree = "<group>"; };
 		32687C532907B36E005799CA /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		AA0CE0242908BD8E00A41C87 /* JsonParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonParser.swift; sourceTree = "<group>"; };
 		AA0CE0272908CAEE00A41C87 /* ListPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListPage.swift; sourceTree = "<group>"; };
@@ -74,6 +76,7 @@
 		325B7EBA29123CA500CEAF98 /* Error */ = {
 			isa = PBXGroup;
 			children = (
+				325B7EBD2913630800CEAF98 /* NetWorkError.swift */,
 			);
 			path = Error;
 			sourceTree = "<group>";
@@ -264,6 +267,7 @@
 				325B7EBC29123E5000CEAF98 /* DetailPage.swift in Sources */,
 				C70FB0FF25BEF61C00C9924E /* ViewController.swift in Sources */,
 				32687C542907B36E005799CA /* Product.swift in Sources */,
+				325B7EBE2913630800CEAF98 /* NetWorkError.swift in Sources */,
 				AA0CE0252908BD8E00A41C87 /* JsonParser.swift in Sources */,
 				C70FB0FB25BEF61C00C9924E /* AppDelegate.swift in Sources */,
 				3258D0DB290F6E3900C25807 /* NetWork.swift in Sources */,
