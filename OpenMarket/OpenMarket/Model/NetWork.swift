@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 protocol API {
     func getDetailPageData(completion: @escaping (Result<DetailPage, Error>) -> Void)
@@ -13,14 +14,15 @@ protocol API {
 }
 
 class NetWork: API {
-    func getDetailPageData(completion: @escaping (Result<DetailPage, Error>) -> Void) {
+    func getProductData(completion: @escaping (Result<Product, Error>) -> Void) {
         let url = "https://openmarket.yagom-academy.kr/api/products?page_no=1&items_per_page=100"
         self.getOpenMarketData(url: url, completion: completion)
     }
     
-    func getProductData(completion: @escaping (Result<Product, Error>) -> Void) {
+    func getDetailPageData(completion: @escaping (Result<DetailPage, Error>) -> Void) {
         let url = "https://openmarket.yagom-academy.kr/api/products/32"
         self.getOpenMarketData(url: url, completion: completion)
+        
     }
 }
 

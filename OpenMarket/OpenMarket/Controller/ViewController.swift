@@ -14,10 +14,19 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         network.getDetailPageData { (result: Result<DetailPage, Error>) in
             switch result {
-            case .success(let success):
-                print(success.id)
-            case .failure(let failure):
-                print(failure)
+                case .success(let success):
+                    print(success.id)
+                case .failure(let failure):
+                    print(failure)
+                }
+            }
+        
+        network.getProductData { (result: Result<Product, Error>) in
+            switch result {
+                case .success(let success):
+                    print(success.pageNo)
+                case .failure(let failure):
+                    print(failure)
             }
         }
         
