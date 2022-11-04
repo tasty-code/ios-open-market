@@ -12,12 +12,12 @@ class JsonParser {
         case fileName = "products"
     }
     
-    func mockParsingData() -> Product? {
+    func mockParsingData() -> ListPage? {
         guard let dataAsset = NSDataAsset(name: FileName.fileName.rawValue) else {
             return nil
         }
         let jsonDecoder = JSONDecoder()
-        let product = try? jsonDecoder.decode(Product.self, from: dataAsset.data)
+        let product = try? jsonDecoder.decode(ListPage.self, from: dataAsset.data)
         
         return product
     }

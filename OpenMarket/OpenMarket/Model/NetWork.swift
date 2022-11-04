@@ -8,21 +8,33 @@
 import Foundation
 import UIKit
 
-protocol API {
-    func getDetailPageData(completion: @escaping (Result<DetailPage, Error>) -> Void)
-    func getProductData(completion: @escaping (Result<Product, Error>) -> Void)
-}
-
-class NetWork: API {
+class NetWork: OpenMarketAPI {
     func getProductData(completion: @escaping (Result<Product, Error>) -> Void) {
-        let url = "https://openmarket.yagom-academy.kr/api/products?page_no=1&items_per_page=100"
+        let url = host + listPath + queryParameter
         self.getOpenMarketData(url: url, completion: completion)
     }
     
     func getDetailPageData(completion: @escaping (Result<DetailPage, Error>) -> Void) {
-        let url = "https://openmarket.yagom-academy.kr/api/products/32"
+        let url = host + detailPath 
         self.getOpenMarketData(url: url, completion: completion)
-        
+    }
+}
+
+extension NetWork: OpenMarketURL {
+    var host: String {
+        return "https://openmarket.yagom-academy.kr/"
+    }
+    
+    var listPath: String {
+        return "api/products"
+    }
+    
+    var detailPath: String {
+        return "api/products/32"
+    }
+    
+    var queryParameter: String {
+        return "?page_no=1&items_per_page=100"
     }
 }
 
