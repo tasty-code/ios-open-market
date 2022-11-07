@@ -136,7 +136,6 @@
 				C70FB10025BEF61C00C9924E /* Main.storyboard */,
 				C70FB10325BEF61D00C9924E /* Assets.xcassets */,
 				C70FB10525BEF61D00C9924E /* LaunchScreen.storyboard */,
-				C70FB10825BEF61D00C9924E /* Info.plist */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -181,6 +180,7 @@
 		C70FB0F925BEF61C00C9924E /* OpenMarket */ = {
 			isa = PBXGroup;
 			children = (
+				C70FB10825BEF61D00C9924E /* Info.plist */,
 				325B2A672914CF14009354D3 /* Protocol */,
 				325B7EBA29123CA500CEAF98 /* Error */,
 				32687C522907B21B005799CA /* Controller */,
