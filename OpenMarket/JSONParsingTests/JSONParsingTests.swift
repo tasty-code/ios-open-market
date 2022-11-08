@@ -9,7 +9,8 @@ import XCTest
 @testable import OpenMarket
 
 final class JSONParsingTests: XCTestCase {
-    let jsonParser = JsonParser()
+    var product: Product?
+    var jsonParser: JSONDecodable?
 
     override func setUpWithError() throws {
         try super.setUpWithError()
@@ -18,19 +19,15 @@ final class JSONParsingTests: XCTestCase {
     override func tearDownWithError() throws {
         try super.tearDownWithError()
     }
-
-    func test_파싱_되는지_확인() {
-        let product = jsonParser.jsonParsingData()
-        
-        print(product)
-    }
     
-    func test_파싱한데이터_pageNo와_1이랑_비교() {
-        let product = jsonParser.jsonParsingData()
+    func test_파싱한데이터의_pageNo는_1이다() {
+        let fileName = "products"
+        let pageNumber = 1
+    
+        let data = jsonParser?.mockParsingData(name: fileName, data: product)
         
-        let pageNo = product?.pageNo
-        
-        XCTAssertEqual(1, pageNo)
+        print(product?.pageNo)
+    
     }
 
 }

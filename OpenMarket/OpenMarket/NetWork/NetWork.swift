@@ -10,31 +10,13 @@ import UIKit
 
 class NetWork: OpenMarketAPI {
     func getProductData(completion: @escaping (Result<Product, Error>) -> Void) {
-        let url = host + listPath + queryParameter
+        let url = OpenMarketURL.host + OpenMarketURL.listPath + OpenMarketURL.queryParameter
         self.getOpenMarketData(url: url, completion: completion)
     }
     
     func getDetailPageData(completion: @escaping (Result<DetailPage, Error>) -> Void) {
-        let url = host + detailPath 
+        let url = OpenMarketURL.host + OpenMarketURL.detailPath 
         self.getOpenMarketData(url: url, completion: completion)
-    }
-}
-
-extension NetWork: OpenMarketURL {
-    var host: String {
-        return "https://openmarket.yagom-academy.kr/"
-    }
-    
-    var listPath: String {
-        return "api/products"
-    }
-    
-    var detailPath: String {
-        return "api/products/32"
-    }
-    
-    var queryParameter: String {
-        return "?page_no=1&items_per_page=100"
     }
 }
 
@@ -67,7 +49,7 @@ extension NetWork {
                     let receivedData = try JSONDecoder().decode(T.self, from: data)
                     completion(.success(receivedData))
                 } catch {
-                    completion(.failure(NetWorkError.decodingError))
+                    completion(.failure(NetWorkError.networkDecodingError))
                 }
             }
         }
