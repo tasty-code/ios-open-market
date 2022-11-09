@@ -7,19 +7,17 @@
 
 import UIKit
 
-protocol JSONDecodable {
-
-}
+protocol JSONDecodable { }
 
 extension JSONDecodable {
-    func mockParsingData2<T: Decodable>(name: String, data: T) throws -> T? {
-            guard let dataAsset = NSDataAsset(name: name) else {
-                throw JSONParsingError.jsonDecodingError
-            }
-            let jsonDecoder = JSONDecoder()
-            guard let data = try? jsonDecoder.decode(T.self, from: dataAsset.data) else {
-                throw JSONParsingError.jsonDecodingError
-            }
-            return data
+    func mockParsingData<T: Decodable>(name: String, data: T) throws -> T? {
+        guard let dataAsset = NSDataAsset(name: name) else {
+            throw JSONParsingError.jsonDecodingError
         }
+        let jsonDecoder = JSONDecoder()
+        guard let data = try? jsonDecoder.decode(T.self, from: dataAsset.data) else {
+            throw JSONParsingError.jsonDecodingError
+        }
+        return data
+    }
 }
