@@ -1,6 +1,6 @@
 //
 //  OpenMarket - ViewController.swift
-//  Created by yagom. 
+//  Created by yagom.
 //  Copyright © yagom. All rights reserved.
 // 
 
@@ -11,5 +11,6 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
     }
 }
