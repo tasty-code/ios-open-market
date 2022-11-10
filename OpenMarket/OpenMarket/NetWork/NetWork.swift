@@ -53,6 +53,7 @@ extension NetWork {
                 }
             }
         }
+        
         task.resume()
     }
 }
