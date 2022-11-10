@@ -1,18 +1,17 @@
 //
 //  OpenMarket - ViewController.swift
-//  Created by yagom. 
+//  Created by yagom.
 //  Copyright © yagom. All rights reserved.
 // 
 
 import UIKit
+import Foundation
 
 class ViewController: UIViewController {
-
+    let jsonParser = JSONParser()
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        let a = try? jsonParser.getMockData()
+        print(a?.pageNo)
     }
-
-
 }
-
