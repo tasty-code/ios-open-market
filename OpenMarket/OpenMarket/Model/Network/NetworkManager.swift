@@ -8,14 +8,11 @@
 import Foundation
 
 final class NetworkManager {
-    let urlSession: URLSession
+    static let urlSession: URLSession = URLSession.shared
+    static var urlManager: URLManager = URLManager()
     
-    init() {
-        self.urlSession = URLSession.shared
-    }
-    
-    func dataTask(request: URLRequest, completion: @escaping(Result<Data, NetworkError>) -> Void ) {
-        let task = self.urlSession.dataTask(with: request) { (data, urlResponse, error) in
+    static func dataTask(request: URLRequest, completion: @escaping(Result<Data, NetworkError>) -> Void ) {
+        let task = NetworkManager.urlSession.dataTask(with: request) { (data, urlResponse, error) in
             
             guard let httpResponse = urlResponse as? HTTPURLResponse, (HTTPStatus.ok.range).contains(httpResponse.statusCode) else {
                 return completion(.failure(.statusCodeError))
@@ -30,13 +27,13 @@ final class NetworkManager {
         task.resume()
     }
     
-    func getData(requestType: Request, completion: @escaping(Result<Data, NetworkError>) -> Void ) {
-        guard let url = URL(string: requestType.url) else {
+    static func getData(requestType: Request, completion: @escaping(Result<Data, NetworkError>) -> Void ) {
+        guard let url = urlManager.requestURL(requestType: requestType)?.url else {
             return completion(.failure(NetworkError.invalidURL))
         }
         var request = URLRequest(url: url)
         request.httpMethod = HTTPMethod.get
         
-        dataTask(request: request, completion: completion)
+        NetworkManager.dataTask(request: request, completion: completion)
     }
 }
