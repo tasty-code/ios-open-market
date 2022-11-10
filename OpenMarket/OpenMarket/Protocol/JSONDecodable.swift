@@ -8,7 +8,7 @@
 import UIKit
 
 protocol JSONDecodable {
-
+    
 }
 
 extension JSONDecodable {
@@ -22,7 +22,6 @@ extension JSONDecodable {
         guard let data = try? jsonDecoder.decode(T.self, from: dataAsset.data) else {
             throw JSONParsingError.jsonDecodingError
         }
-        
         return data
     }
 }
