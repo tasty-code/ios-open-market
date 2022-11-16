@@ -59,15 +59,8 @@ class ProductCollectionViewCell: UICollectionViewCell {
     }
     
     func configCell(with product: DetailPage) {
-        NetWork().getDetailPageData { (result: Result<DetailPage, Error>) in
-            switch result {
-            case .success(let success):
-                DispatchQueue.main.sync {
-                    self.productImage.image = UIImage(named: success.thumbnail)
-                }
-            case .failure(let failure):
-                print(failure)
-            }
+        ImageLoader.loadImage(from: product.thumbnail) { image in
+            self.productImage.image = image
         }
         
         let attrString1 = NSAttributedString(
