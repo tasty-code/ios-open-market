@@ -17,7 +17,7 @@ class NetWork: OpenMarketAPI {
     func getDetailPageData(completion: @escaping (Result<DetailPage, Error>) -> Void) {
         let url = OpenMarketURL.host + OpenMarketURL.detailPath 
         self.getOpenMarketData(url: url, completion: completion)
-    }
+    }    
 }
 
 extension NetWork {

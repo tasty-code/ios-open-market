@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ListPage: Decodable {
+struct ListPage: Decodable, Hashable {
     let id: Int
     let vendorId: Int
     let name: String

@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Vendors: Decodable {
+struct Vendors: Decodable, Hashable {
     let id: Int
     let name: String
 }
