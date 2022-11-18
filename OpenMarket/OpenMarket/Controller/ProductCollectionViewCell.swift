@@ -10,6 +10,16 @@ import UIKit
 class ProductCollectionViewCell: UICollectionViewCell {
     static let identifier = "cell"
     
+    let stackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.axis = .vertical
+        stackView.alignment = .center
+        stackView.distribution = .equalSpacing
+        stackView.spacing = 8
+        return stackView
+    }()
+    
     let productImage: UIImageView = {
         let iv = UIImageView()
         iv.contentMode = .scaleAspectFit
@@ -28,6 +38,18 @@ class ProductCollectionViewCell: UICollectionViewCell {
         return priceLb
     }()
     
+    let bargainPriceLabel: UILabel = {
+        let bgPriceLb = UILabel()
+        bgPriceLb.numberOfLines = 0
+        return bgPriceLb
+    }()
+    
+    let stockLabel: UILabel = {
+        let stockLb = UILabel()
+        stockLb.numberOfLines = 0
+        return stockLb
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         layout()
@@ -38,40 +60,28 @@ class ProductCollectionViewCell: UICollectionViewCell {
     }
     
     func layout() {
-        [productImage, nameLabel, priceLabel].forEach {
-            contentView.addSubview($0)
+        [productImage, nameLabel, priceLabel, bargainPriceLabel, stockLabel].forEach {
+            stackView.addArrangedSubview($0)
             $0.translatesAutoresizingMaskIntoConstraints = false
         }
         
-        layer.masksToBounds = true
-        layer.cornerRadius = 10
+        contentView.addSubview(stackView)
         
         NSLayoutConstraint.activate([
-            productImage.topAnchor.constraint(equalTo: contentView.topAnchor),
+            productImage.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
             productImage.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             productImage.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            productImage.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-            
-            nameLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
-            nameLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-            nameLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10)
+            productImage.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -100),
         ])
     }
     
-    func configCell(with product: DetailPage) {
+    func configCell(product: ListPage) {
         ImageLoader.loadImage(from: product.thumbnail) { image in
             self.productImage.image = image
         }
-        
-        let attrString1 = NSAttributedString(
-            string: product.name
-        )
-        
-        let attrString2 = NSAttributedString(
-            string: String(product.price)
-        )
-        
-        nameLabel.attributedText = attrString1
-        priceLabel.attributedText = attrString2
+        nameLabel.text = product.name
+        priceLabel.text = String(product.price)
+        bargainPriceLabel.text = String(product.bargainPrice)
+        stockLabel.text = "잔여 수량 : " + String(product.stock)
     }
 }

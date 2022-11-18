@@ -14,7 +14,7 @@ class JSONParser: JSONDecodable {
         guard let mock = try? mockParsingData(name: fileName, data: product) else {
             throw NetWorkError.unknownError
         }
-
+        
         return mock
     }
 }

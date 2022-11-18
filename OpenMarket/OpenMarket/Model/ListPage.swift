@@ -20,6 +20,8 @@ struct ListPage: Decodable, Hashable {
     let stock: Int
     let createdAt: String
     let issuedAt: String
+    
+    
   
     enum CodingKeys: String, CodingKey {
         case id, name, thumbnail, currency, price, stock, description

@@ -8,28 +8,30 @@ import UIKit
 import Foundation
 
 class ViewController: UIViewController {
-    var productData: [DetailPage] = []
+    var productData: [Product] = []
     var network = NetWork()
+    
     enum Section {
         case main
     }
+    
     var gridCollectionView: UICollectionView!
-    var dataSource: UICollectionViewDiffableDataSource<Section, DetailPage>!
+    var dataSource: UICollectionViewDiffableDataSource<Section, ListPage>!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "ddd"
         getData()
     }
     
     func getData() {
-        network.getDetailPageData { (result: Result<DetailPage, Error>) in
+        network.getProductData { (result: Result<Product, Error>) in
             switch result {
-            case .success(let success):
-                self.productData.append(success)
+            case .success(let data):
+                self.productData.insert(data, at: 0)
                 DispatchQueue.main.sync {
                     self.createGridCollectionView()
-                    self.configDataSource()
+                    self.configDataSource(listPage: data.pages)
+                    self.gridCollectionView.reloadData()
                 }
             case .failure(let failure):
                 print(failure)
@@ -43,14 +45,12 @@ class ViewController: UIViewController {
 
         let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(self.view.frame.height * 0.25))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: 2)
-        group.interItemSpacing = .fixed(10)
 
         let section = NSCollectionLayoutSection(group: group)
         section.interGroupSpacing = CGFloat(10)
-        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10)
-
+        
         let layout = UICollectionViewCompositionalLayout(section: section)
-
+        
         return layout
     }
     
@@ -68,18 +68,18 @@ class ViewController: UIViewController {
         ])
     }
     
-    func configDataSource() {
-        let cellRegistration = UICollectionView.CellRegistration<ProductCollectionViewCell, DetailPage> { cell,indexPath,product in
-            cell.configCell(with: product)
+    func configDataSource(listPage: [ListPage]) {
+        let cellRegistration = UICollectionView.CellRegistration<ProductCollectionViewCell, ListPage> { cell, indexPath, product in
+            cell.configCell(product: product)
         }
         
-        dataSource = UICollectionViewDiffableDataSource<Section, DetailPage>(collectionView: gridCollectionView, cellProvider: { (collectionView, indexPath, itemIdentifier) -> UICollectionViewCell? in
+        dataSource = UICollectionViewDiffableDataSource<Section, ListPage>(collectionView: gridCollectionView, cellProvider: { (collectionView, indexPath, itemIdentifier) -> UICollectionViewCell? in
             return collectionView.dequeueConfiguredReusableCell(using: cellRegistration, for: indexPath, item: itemIdentifier)
         })
         
-        var snapShot = NSDiffableDataSourceSnapshot<Section, DetailPage>()
+        var snapShot = NSDiffableDataSourceSnapshot<Section, ListPage>()
         snapShot.appendSections([.main])
-        snapShot.appendItems(productData)
+        snapShot.appendItems(listPage)
         dataSource.apply(snapShot)
     }
 
