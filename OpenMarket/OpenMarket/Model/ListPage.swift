@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ListPage: Decodable {
+struct ListPage: Decodable, Hashable {
     let id: Int
     let vendorId: Int
     let name: String
@@ -20,6 +20,8 @@ struct ListPage: Decodable {
     let stock: Int
     let createdAt: String
     let issuedAt: String
+    
+    
   
     enum CodingKeys: String, CodingKey {
         case id, name, thumbnail, currency, price, stock, description

@@ -25,5 +25,4 @@ final class JSONParsingTests: XCTestCase {
         
         XCTAssertEqual(pageNumber, product?.pageNo)
     }
-
 }
