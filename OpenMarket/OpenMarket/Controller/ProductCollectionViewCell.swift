@@ -20,7 +20,7 @@ class ProductCollectionViewCell: UICollectionViewCell {
         return stackView
     }()
     
-    let productImage: UIImageView = {
+    var productImage: UIImageView = {
         let iv = UIImageView()
         iv.contentMode = .scaleAspectFit
         return iv
@@ -57,6 +57,11 @@ class ProductCollectionViewCell: UICollectionViewCell {
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        self.productImage.image = nil
     }
     
     func layout() {
