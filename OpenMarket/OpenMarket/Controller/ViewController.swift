@@ -8,22 +8,22 @@ import UIKit
 import Foundation
 
 class ViewController: UIViewController {
-    var productData: [Product] = []
-    var network = NetWork()
+    private var productData: [Product] = []
+    private var network = NetWork()
     
-    enum Section {
+    private enum Section {
         case main
     }
     
-    var gridCollectionView: UICollectionView!
-    var dataSource: UICollectionViewDiffableDataSource<Section, ListPage>!
+    private var gridCollectionView: UICollectionView!
+    private var dataSource: UICollectionViewDiffableDataSource<Section, ListPage>!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         getData()
     }
     
-    func getData() {
+    private func getData() {
         network.getProductData { (result: Result<Product, Error>) in
             switch result {
             case .success(let data):
@@ -39,22 +39,24 @@ class ViewController: UIViewController {
         }
     }
     
-    func createLayout() -> UICollectionViewCompositionalLayout{
+    private func createLayout() -> UICollectionViewCompositionalLayout{
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
-
+        
         let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(self.view.frame.height * 0.25))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: 2)
-
+        group.interItemSpacing = .fixed(10)
+        
         let section = NSCollectionLayoutSection(group: group)
         section.interGroupSpacing = CGFloat(10)
+        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10)
         
         let layout = UICollectionViewCompositionalLayout(section: section)
         
         return layout
     }
     
-    func createGridCollectionView() {
+    private func createGridCollectionView() {
         gridCollectionView = UICollectionView(frame: .zero, collectionViewLayout: createLayout())
 
         view.addSubview(gridCollectionView)
@@ -68,7 +70,7 @@ class ViewController: UIViewController {
         ])
     }
     
-    func configDataSource(listPage: [ListPage]) {
+    private func configDataSource(listPage: [ListPage]) {
         let cellRegistration = UICollectionView.CellRegistration<ProductCollectionViewCell, ListPage> { cell, indexPath, product in
             cell.configCell(product: product)
         }
