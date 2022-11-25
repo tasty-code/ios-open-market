@@ -8,11 +8,13 @@
 import Foundation
 
 class JSONParser: JSONDecodable {
-    var product: Product?
-
-    func getMockData() throws -> Product? {
+    func getMockData(product: Product) throws -> Product {
         let fileName = "products"
-        guard let mock = try? mockParsingData(name: fileName, data: product) else { throw NetWorkError.unknownError }
+        
+        guard let mock = try? mockParsingData(name: fileName, data: product) else {
+            throw NetWorkError.unknownError
+        }
+        
         return mock
     }
 }

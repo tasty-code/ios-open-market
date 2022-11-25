@@ -20,6 +20,8 @@
 		AA0CE02C2908CB2F00A41C87 /* Vendors.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0CE02B2908CB2F00A41C87 /* Vendors.swift */; };
 		AA0CE0342908FE0700A41C87 /* JSONParsingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0CE0332908FE0700A41C87 /* JSONParsingTests.swift */; };
 		AA3D8160291A1B1600276292 /* JSONParsingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3D815F291A1B1600276292 /* JSONParsingError.swift */; };
+		AA408EC029246B7800FD02A2 /* ProductCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA408EBF29246B7800FD02A2 /* ProductCollectionViewCell.swift */; };
+		AA408EC22924BF0400FD02A2 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA408EC12924BF0400FD02A2 /* ImageLoader.swift */; };
 		C70FB0FB25BEF61C00C9924E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C70FB0FA25BEF61C00C9924E /* AppDelegate.swift */; };
 		C70FB0FD25BEF61C00C9924E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C70FB0FC25BEF61C00C9924E /* SceneDelegate.swift */; };
 		C70FB0FF25BEF61C00C9924E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C70FB0FE25BEF61C00C9924E /* ViewController.swift */; };
@@ -61,6 +63,8 @@
 		AA0CE0312908FE0700A41C87 /* JSONParsingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JSONParsingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA0CE0332908FE0700A41C87 /* JSONParsingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONParsingTests.swift; sourceTree = "<group>"; };
 		AA3D815F291A1B1600276292 /* JSONParsingError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONParsingError.swift; sourceTree = "<group>"; };
+		AA408EBF29246B7800FD02A2 /* ProductCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCollectionViewCell.swift; sourceTree = "<group>"; };
+		AA408EC12924BF0400FD02A2 /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
 		C70FB0F725BEF61C00C9924E /* OpenMarket.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OpenMarket.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C70FB0FA25BEF61C00C9924E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C70FB0FC25BEF61C00C9924E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -111,6 +115,7 @@
 			children = (
 				3258D0DA290F6E3900C25807 /* NetWork.swift */,
 				325B2A7A291B3EE3009354D3 /* JSONParser.swift */,
+				AA408EC12924BF0400FD02A2 /* ImageLoader.swift */,
 			);
 			path = NetWork;
 			sourceTree = "<group>";
@@ -152,6 +157,7 @@
 				C70FB0FA25BEF61C00C9924E /* AppDelegate.swift */,
 				C70FB0FC25BEF61C00C9924E /* SceneDelegate.swift */,
 				C70FB0FE25BEF61C00C9924E /* ViewController.swift */,
+				AA408EBF29246B7800FD02A2 /* ProductCollectionViewCell.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -344,6 +350,7 @@
 			files = (
 				AA0CE02A2908CB2100A41C87 /* Images.swift in Sources */,
 				AA0CE02C2908CB2F00A41C87 /* Vendors.swift in Sources */,
+				AA408EC029246B7800FD02A2 /* ProductCollectionViewCell.swift in Sources */,
 				AA0CE0282908CAEE00A41C87 /* ListPage.swift in Sources */,
 				325B7EBC29123E5000CEAF98 /* DetailPage.swift in Sources */,
 				C70FB0FF25BEF61C00C9924E /* ViewController.swift in Sources */,
@@ -352,6 +359,7 @@
 				AA3D8160291A1B1600276292 /* JSONParsingError.swift in Sources */,
 				325B7EBE2913630800CEAF98 /* NetWorkError.swift in Sources */,
 				AA0CE0252908BD8E00A41C87 /* JSONDecodable.swift in Sources */,
+				AA408EC22924BF0400FD02A2 /* ImageLoader.swift in Sources */,
 				C70FB0FB25BEF61C00C9924E /* AppDelegate.swift in Sources */,
 				325B2A7B291B3EE3009354D3 /* JSONParser.swift in Sources */,
 				3258D0DB290F6E3900C25807 /* NetWork.swift in Sources */,
@@ -532,7 +540,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -587,7 +595,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -604,7 +612,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = OpenMarket/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -623,7 +631,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = OpenMarket/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

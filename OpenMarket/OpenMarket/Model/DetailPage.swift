@@ -12,7 +12,7 @@ enum Currency: String, Decodable {
     case usd = "USD"
 }
 
-struct DetailPage: Decodable {
+struct DetailPage: Decodable, Hashable {
     let id: Int
     let vendorId: Int
     let name: String
